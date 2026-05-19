@@ -1,0 +1,6 @@
+# Configuración local de Claude Code
+.claude/
+
+# Archivos de trabajo internos (no forman parte del entregable)
+CLAUDE.md
+PROMPT_ARRANQUE.txt
