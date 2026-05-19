@@ -85,12 +85,22 @@ En lugar de resolver los 64 ejercicios en orden numérico, se reorganizaron por 
 |---|---|---|
 | 1 | Consultas sobre una sola tabla | 18 |
 | 2 | Agregaciones y `GROUP BY` | 9 |
-| 3 | `JOIN`s entre tablas | 18 |
-| 4 | Subconsultas | 14 |
+| 3 | `JOIN`s entre tablas (`INNER`, `LEFT`, `RIGHT`, `CROSS`, `FULL`) | 18 |
+| 4 | Subconsultas (en `WHERE` / `EXISTS` / `NOT EXISTS`, en `SELECT`, en `FROM`) | 14 |
 | 5 | Vistas | 1 |
-| 6 | Tablas temporales | 2 |
+| 6 | Estructuras de datos temporales (**CTEs** — `WITH ...`) | 2 |
 | 7 | `CROSS JOIN` y casos especiales | 2 |
 | **Total** | | **64** |
+
+**Constructos SQL utilizados** (los explicados durante el máster):
+
+- **Básicos:** `SELECT`, `FROM`, `WHERE`, `AS`
+- **Agregación:** `MIN`, `MAX`, `COUNT`, `SUM`, `AVG`, `STDDEV`, `VARIANCE`, `CONCAT`
+- **Ordenación / agrupación:** `ORDER BY`, `LIMIT`, `OFFSET`, `GROUP BY`, `HAVING`
+- **Relaciones:** `INNER JOIN`, `LEFT JOIN`, `RIGHT JOIN`, `CROSS JOIN`, `FULL JOIN`
+- **Subconsultas:** en `WHERE` (escalar / `EXISTS` / `NOT EXISTS`), en `SELECT`, en `FROM`
+- **Vistas:** `CREATE VIEW`
+- **Estructuras temporales:** **CTEs** (`WITH ... AS (...)`)
 
 ### 4.4 Ciclo de trabajo por ejercicio
 
@@ -118,8 +128,9 @@ psql -U postgres -d sakila -v ON_ERROR_STOP=1 -f soluciones_sakila.sql
 - Aliases cortos y descriptivos: `f` (film), `a` (actor), `c` (customer), `r` (rental), `p` (payment), `fa` (film_actor), `fc` (film_category).
 - Cada ejercicio precedido por un comentario `-- Ejercicio N: descripción`.
 - Indentación de 4 espacios en subcláusulas.
-- Uso de `CTE` (`WITH ...`) en subconsultas complejas (p. ej., Ej. 55) para mejorar la legibilidad.
-- `DROP ... IF EXISTS` antes de cada vista o tabla temporal → el script es **idempotente**.
+- Uso de **CTEs** (`WITH ... AS (...)`) tanto en subconsultas complejas (Ej. 55) como en los ejercicios de "estructura de datos temporal" (Ej. 51 y 52).
+- Las subconsultas en `WHERE` usan `EXISTS` / `NOT EXISTS` (en lugar de `IN` / `NOT IN`) por ser la forma enseñada y la más eficiente con índices.
+- `DROP VIEW IF EXISTS` antes de la vista → el script es **idempotente**.
 - Se evita `SELECT *` salvo cuando el ejercicio lo pide explícitamente.
 
 ---
