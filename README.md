@@ -16,7 +16,7 @@ Resolver 64 consultas SQL sobre la base de datos **Sakila** (modelo clásico de 
 - `JOIN`s y relaciones entre tablas
 - Subconsultas
 - Vistas
-- Tablas temporales
+- Estructuras de datos temporales (CTEs)
 - Casos especiales (`CROSS JOIN`)
 
 El entregable principal es el archivo [`soluciones_sakila.sql`](soluciones_sakila.sql) con las 64 consultas comentadas y organizadas por bloques.
